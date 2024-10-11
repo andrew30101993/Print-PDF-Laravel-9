@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label>{{ __('Name') }}</label>
                                     <input type="text" name="name" class="form-control"
-                                        placeholder="Name" value="">
+                                        placeholder="Name" value="{{ old('name') }}">
                                     @include('alerts.feedback', ['field' => 'name'])
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label>{{ __('Email') }}</label>
                                     <input type="email" name="email" class="form-control"
-                                        placeholder="Email" value>
+                                        placeholder="Email" value="{{ old('email') }}">
                                     @include('alerts.feedback', ['field' => 'email'])
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label>{{ __('Address') }}</label>
                                     <input type="address" name="address" class="form-control"
-                                        placeholder="Address" value="">
+                                        placeholder="Address" value="{{ old('address') }}">
                                     @include('alerts.feedback', ['field' => 'address'])
                                 </div>
                             </div>

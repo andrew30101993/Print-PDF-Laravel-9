@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label>{{ __('Product Name') }}</label>
                                     <input type="text" name="name" class="form-control"
-                                        placeholder="Product Name" value="">
+                                        placeholder="Product Name" value="{{ old("name") }}">
                                     @include('alerts.feedback', ['field' => 'name'])
                                 </div>
                             </div>
@@ -48,8 +48,8 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('Product Quantity') }}</label>
-                                    <input type="quantity" name="quantity" class="form-control"
-                                        placeholder="Product Quantity" value="">
+                                    <input type="text" name="quantity" class="form-control"
+                                        placeholder="Product Quantity" value="{{ old("quantity") }}">
                                     @include('alerts.feedback', ['field' => 'quantity'])
                                 </div>
                             </div>
@@ -59,8 +59,8 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('Purchase Price') }}</label>
-                                    <input type="purchase_price" name="purchase_price" class="form-control"
-                                        placeholder="Purchase Price" value="">
+                                    <input type="text" name="purchase_price" class="form-control"
+                                        placeholder="Purchase Price" value="{{ old("purchase_price") }}">
                                     @include('alerts.feedback', ['field' => 'purchase_price'])
                                 </div>
                             </div>
@@ -70,8 +70,8 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('Selling Price') }}</label>
-                                    <input type="selling_price" name="selling_price" class="form-control"
-                                        placeholder="Selling Price" value="">
+                                    <input type="text" name="selling_price" class="form-control"
+                                        placeholder="Selling Price" value="{{ old("selling_price") }}">
                                     @include('alerts.feedback', ['field' => 'selling_price'])
                                 </div>
                             </div>
@@ -91,8 +91,8 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('SGST') }}</label>
-                                    <input type="sgst" name="sgst" class="form-control"
-                                        placeholder="SGST" value="">
+                                    <input type="number" name="sgst" class="form-control"
+                                        placeholder="SGST" value="{{ old("sgst") }}">
                                     @include('alerts.feedback', ['field' => 'sgst'])
                                 </div>
                             </div>
@@ -102,8 +102,8 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('CGST') }}</label>
-                                    <input type="cgst" name="cgst" class="form-control"
-                                        placeholder="CGST" value="">
+                                    <input type="number" name="cgst" class="form-control"
+                                        placeholder="CGST" value="{{ old("cgst") }}">
                                     @include('alerts.feedback', ['field' => 'cgst'])
                                 </div>
                             </div>
@@ -113,8 +113,8 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('IGST') }}</label>
-                                    <input type="igst" name="igst" class="form-control"
-                                        placeholder="IGST" value="">
+                                    <input type="number" name="igst" class="form-control"
+                                        placeholder="IGST" value="{{ old("igst") }}">
                                     @include('alerts.feedback', ['field' => 'igst'])
                                 </div>
                             </div>

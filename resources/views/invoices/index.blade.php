@@ -24,6 +24,29 @@
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
+                    <div class="row">
+                        <div class="col-12 py-1 filter-section">
+                        <form action="{{ url('invoices') }}" method="GET" id="filter_form">
+                            <div class="row g-3">
+                            <div class="col-4">
+                                <div class="form-group mt-10px">
+                                    <select name="customer_id" class="form-control">
+                                        <option value="">{{ __('Select Customer') }}</option>
+                                        @foreach($customers as $customer)
+                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <input type="submit" value="Search" class="btn btn-primary btn-round text-white" />
+                                <a href="{{ url('invoices') }}" class="btn btn-primary btn-round text-white">Reset</a>
+                            </div>
+                            </div>
+                        </form>
+                        </div>
+                        
+                    </div>
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>

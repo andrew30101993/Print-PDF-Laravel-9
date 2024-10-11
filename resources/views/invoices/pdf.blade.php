@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Invoice #{{ $invoice->number }}</title>
+    <title>Invoice #{{ $invoice->invoice_number }}</title>
     <style>
         body { font-family: Arial, sans-serif; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         table, th, td { border: 1px solid black; padding: 8px; text-align: left; }
         .total-row { font-weight: bold; }
+        .address-section { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .address-box { width: 45%; }
     </style>
 </head>
 <body>
     <h1>Invoice #{{ $invoice->invoice_number }}</h1>
     <p><strong>Date:</strong> {{ $invoice->invoice_date }}</p>
-    <p><strong>Customer:</strong> {{ $invoice->customer->name }}</p>
+
+    <!-- Address Section -->
+    <div class="address-section">
+        <!-- Customer Address -->
+        <div class="address-box">
+            <h3>Customer Address</h3>
+            <p><strong>{{ $invoice->customer->name }}</strong></p>
+            <p>{{ $invoice->customer->address }}</p>
+        </div>
+
+        <!-- Company Address -->
+        <div class="address-box">
+            <h3>Company Address</h3>
+            <p><strong>Test Company</strong></p> <!-- Assuming you have a $company variable -->
+            <p>Address</p>
+            <p>City</p>
+            <p>State</p>
+            <p>Country</p>
+
+        </div>
+    </div>
+
     <p><strong>Salesperson:</strong> {{ $invoice->salesman_name }}</p>
 
+    <!-- Product Table -->
     <table>
         <thead>
             <tr>

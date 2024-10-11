@@ -9,18 +9,30 @@ use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
 use PDF;
+use Redirect;
 
 class InvoicesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $invoices = Invoices::leftJoin("users","users.id", "invoices.customer_id")
-                ->select("invoices.*","users.name as customer_name")
-                ->paginate(25);
-        return view('invoices.index', ['invoices' => $invoices]);
+        $customers = User::where("role","customer")->get();
+        $products = Products::get();
+        
+        $query = Invoices::leftJoin("users","users.id", "invoices.customer_id")
+                ->select("invoices.*","users.name as customer_name");
+
+        if ($request->customer_id != "" && !empty($request->customer_id)) {
+            $customer_id = $request->customer_id;
+            $query->where(function($query) use($customer_id){
+                $query->where('invoices.customer_id',$customer_id);
+            });
+        }
+
+        $invoices = $query->paginate(25);
+        return view('invoices.index', ['invoices' => $invoices,'customers' => $customers,'products' => $products]);
     }
 
     /**
