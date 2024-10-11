@@ -6,7 +6,7 @@
 ])
 
 @section('content')
-<div class="panel-header panel-header-sm">
+<div class="panel-header panel-header-sm">  
 </div>
 <div class="content">
     <div class="row">
@@ -14,6 +14,16 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">{{ __('Create Invoice') }}</h5>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <form method="post" action="{{ route('invoices.store') }}" autocomplete="off">
@@ -118,6 +128,15 @@
                                 <input type="number" name="invoice_grand_total" id="invoice_grand_total" class="form-control" value="0" step="0.01" readonly>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>{{ __('Desctiption') }}</label>
+                                    <textarea class="form-control" id="description" placeholder="Desctiption" name="description" rows="3">{{ old('description') }}</textarea>
+                                    @include('alerts.feedback', ['field' => 'description'])
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-footer ">
                             <button type="submit" class="btn btn-primary btn-round">{{ __('Save') }}</button>
                         </div>
@@ -199,6 +218,14 @@
 
     $(document).on('input', '.quantity', function() {
         const row = $(this).closest('tr');
+        const product_quantity = parseFloat(row.find('.product_quantity').val()) || 0;
+        const quantity = parseFloat(row.find('.quantity').val()) || 0;
+
+        if(product_quantity < quantity){
+            row.find('.quantity').val("1");
+            alert("Please select a smaller quantity based on the available product quantity.");
+            return false;
+        }
         calculateSubtotal(row);
     });
 

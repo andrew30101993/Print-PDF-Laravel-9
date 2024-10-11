@@ -48,13 +48,20 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('Address') }}</label>
-                                    <input type="address" name="address" class="form-control"
-                                        placeholder="Address" value="{{ old('address') }}">
+                                    <textarea class="form-control" id="address" placeholder="Address" name="address" rows="3">{{ old('address') }}</textarea>
                                     @include('alerts.feedback', ['field' => 'address'])
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div>                        
+                        <div class="row">
+                            <div class="col-md-7 pr-1">
+                                <div class="form-group">
+                                    <label>{{ __('State') }}</label>
+                                    <input type="text" name="state" class="form-control"
+                                        placeholder="State" value="{{ old('state') }}">
+                                    @include('alerts.feedback', ['field' => 'state'])
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer ">
                             <button type="submit" class="btn btn-primary btn-round">{{ __('Save') }}</button>

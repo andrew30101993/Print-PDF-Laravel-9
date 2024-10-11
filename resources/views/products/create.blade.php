@@ -15,6 +15,15 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">{{ __(' Add Product') }}</h5>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <form method="post" action="{{ route('productlist.store') }}" autocomplete="off"

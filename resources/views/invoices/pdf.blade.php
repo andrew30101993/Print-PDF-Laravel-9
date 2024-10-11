@@ -57,7 +57,7 @@
                     <td>${{ $product->price }}</td> <!-- Product price -->
                     <td>{{ $product->pur_quantity }}</td> <!-- Product quantity -->
                     <td>${{ $product->sub_total }}</td> <!-- Subtotal -->
-                    <td>{{ $product->gst }}</td> <!-- GST percentage -->
+                    <td>{{ $product->gst }}%</td> <!-- GST percentage -->
                     <td>${{ $product->total }}</td> <!-- Total -->
                 </tr>
             @endforeach

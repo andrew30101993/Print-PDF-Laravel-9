@@ -44,7 +44,8 @@ class InvoicesController extends Controller
         $number = rand(pow(10, $digits-1), pow(10, $digits)-1);
 
         $customers = User::where("role","customer")->get();
-        $products = Products::get();
+        
+        $products = Products::where("quantity",">=",1)->get();
         return view('invoices.create', compact('number', 'customers', 'products'));
     }
 
@@ -73,6 +74,7 @@ class InvoicesController extends Controller
         $invoice->sub_total = $request->invoice_subtotal;
         $invoice->gst_total = $request->invoice_gst_total;
         $invoice->grand_total = $request->invoice_grand_total;
+        $invoice->description = $request->description;
         $invoice->save();
     
         // Save the products for the invoice in invoice_tables

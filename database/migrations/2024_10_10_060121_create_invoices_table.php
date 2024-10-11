@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float("sub_total", 10, 2);
             $table->float("gst_total", 10, 2);
             $table->float("grand_total", 10, 2);
+            $table->text("description")->nullable();
             $table->timestamps();
         });
     }

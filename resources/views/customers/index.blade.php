@@ -30,6 +30,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Address</th>
+                                <th>State</th>
                                 <th class="disabled-sorting text-right">Actions</th>
                             </tr>
                         </thead>
@@ -44,6 +45,7 @@
                                 <td>{{ $customer->name }}</td>
                                 <td>{{ $customer->email}}</td>
                                 <td>{{ $customer->address}}</td>
+                                <td>{{ $customer->state}}</td>
                                 <td class="text-right">
                                     <a type="button" href="{{ route('customers.edit',$customer->id) }}" rel="tooltip"
                                         class="text-white ml-3" data-original-title="" title="">

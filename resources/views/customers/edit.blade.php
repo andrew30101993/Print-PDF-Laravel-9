@@ -14,6 +14,15 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">{{ __(' Edit Customer') }}</h5>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <form method="post" action="{{ route('customers.update', $customer->id) }}" autocomplete="off"
@@ -49,13 +58,21 @@
                             <div class="col-md-7 pr-1">
                                 <div class="form-group">
                                     <label>{{ __('Address') }}</label>
-                                    <input type="text" name="address" class="form-control"
-                                        placeholder="Address" value="{{ old('address', $customer->address) }}">
+                                    <textarea class="form-control" id="address" name="address" placeholder="Address"  rows="3">{{ $customer->address }}</textarea>
                                     @include('alerts.feedback', ['field' => 'address'])
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-7 pr-1">
+                                <div class="form-group">
+                                    <label>{{ __('State') }}</label>
+                                    <input type="text" name="state" class="form-control"
+                                        placeholder="State" value="{{ $customer->state }}">
+                                    @include('alerts.feedback', ['field' => 'state'])
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-footer ">
                             <button type="submit" class="btn btn-primary btn-round">{{ __('Update') }}</button>
                         </div>

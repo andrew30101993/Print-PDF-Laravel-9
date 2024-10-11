@@ -34,6 +34,7 @@ class CustomersController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'address' => 'required',
+            'state' => 'required',
         ]);
 
         $customer = new User();
@@ -41,6 +42,7 @@ class CustomersController extends Controller
         $customer->email = $request->email;
         $customer->password = Hash::make('123456');
         $customer->address = $request->address;
+        $customer->state = $request->state;
         $customer->role = "customer";
 
         if ($customer->save()) {
@@ -68,12 +70,14 @@ class CustomersController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'address' => 'required',
+            'state' => 'required',
         ]);
 
         $customer = User::findOrFail($id);
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->address = $request->address;
+        $customer->state = $request->state;
 
         if ($customer->save()) {
             return redirect()->route('customers.index')->with('success', 'Customer Added successfully.');
