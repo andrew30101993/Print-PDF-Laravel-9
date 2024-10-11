@@ -1,0 +1,38 @@
+.unit_filetype {
+    opacity: 1 !important;
+    position: relative !important;
+}
+
+.logo-normal {
+    text-align: center !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.delete-icon:focus {
+    outline: none !important;
+}
+
+.page-item.active .page-link {
+    background-color: #f96332;
+    border-color: #f96332;
+}
+.page-link, .page-link:hover {
+    color: #f96332;
+}
+
+.mt-10px{
+    margin-top: 10px;
+}
+
+.filter-section{
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+textarea.form-control{
+    border-radius: 10px;
+}
+
+
+
